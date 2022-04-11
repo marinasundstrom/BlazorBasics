@@ -28,6 +28,20 @@ To build this, you need:
 * .NET 6 SDK (lastest)
 * VS Code or Visual Studio (if you don't prefere Notepad :) )
 
+## Run the project
+
+```
+dotnet run
+```
+
+or
+
+```
+dotnet watch
+```
+
+
+
 ## Project structure
 
 The project is organized like this:
