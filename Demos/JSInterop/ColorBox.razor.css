@@ -1,0 +1,9 @@
+.box {
+    padding: 15px;
+    border: 1px solid black;
+    background-color: lightgray;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}

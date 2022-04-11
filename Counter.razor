@@ -1,0 +1,49 @@
+<h1>Counter</h1>
+
+<p role="status">Current count: @CurrentCount</p>
+
+<button @onclick="IncrementCount">Increment</button>
+ 
+@code {
+    /// <summary>
+    /// Gets or sets the current count.
+    /// </summary>
+    [Parameter]
+    public int CurrentCount { get; set; } = 0;
+
+
+    /// <summary>
+    /// Gets or sets a callback that is triggered when the current count has changed.
+    /// </summary>
+    [Parameter]
+    public EventCallback<int> CurrentCountChanged { get; set; }
+
+    /// <summary>
+    /// Gets or sets the value that the current count will be incremented by.
+    /// </summary>
+    [Parameter]
+    public int IncrementBy { get; set; } = 1;
+
+    /// <summary>
+    /// Resets the current count.
+    /// </summary>
+    /// <returns>A ValueTask</returns>
+    public async ValueTask ResetAsync()
+    {
+        CurrentCount = 0;
+
+        await CurrentCountChanged.InvokeAsync(CurrentCount);
+
+        // Blazor cannot detect changes in the componet since this method is not a Callback.
+        // We have to manually tell Blazor that the state has changed.
+
+        StateHasChanged();
+    }
+
+    private async Task IncrementCount()
+    {
+        CurrentCount += IncrementBy;
+
+        await CurrentCountChanged.InvokeAsync(CurrentCount);
+    }
+}

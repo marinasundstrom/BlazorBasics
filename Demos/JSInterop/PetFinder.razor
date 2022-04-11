@@ -1,0 +1,50 @@
+@inject IJSRuntime JSRuntime
+
+<h2>Find Pet</h2>
+
+<p>Demonstrates JavaScript invoking a C# method. Passing complex data.</p>
+
+@if(pet is not null) 
+{
+    <h3>Pet</h3>
+
+    <dl>
+        <dt>Name</dt>
+        <dd>@pet.Name</dd>
+
+        <dt>Species</dt>
+        <dd>@pet.Species</dd>
+
+        <dt>Breed</dt>
+        <dd>@pet.Breed</dd>
+        
+        <dt>Age</dt>
+        <dd>@pet.Age</dd>
+    </dl>
+}
+
+<button @onclick="FindPet">Find pet (Callback 2s)</button>
+
+@code {
+    Pet? pet;
+
+    async Task FindPet()
+    {
+        // Wrap JsInteropSample component in a reference, and pass to "findPet" function in JavaScript.
+        // Response will passed to "OnPetFound" method, which is invoked from JavaScript.
+        
+        var componentRef = DotNetObjectReference.Create(this);
+
+        await JSRuntime.InvokeVoidAsync("findPet", new object [] { componentRef });
+    }
+
+    [JSInvokable]
+    public async Task OnPetFound(Pet pet) 
+    {
+        this.pet = pet;
+
+        StateHasChanged();
+    }
+
+    public record Pet(string Name, string Species, string Breed, int Age);
+}

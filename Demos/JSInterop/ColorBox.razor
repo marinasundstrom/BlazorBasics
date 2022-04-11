@@ -1,0 +1,18 @@
+@inject IJSRuntime JSRuntime
+
+<h2>Color box</h2>
+
+<p>Demonstrates passing an ElementReference from Blazor to JavaScript.</p>
+
+<div class="box mb-15" @ref="box" @onclick="OnBoxClicked">Click to change color</div>
+
+@code {
+    ElementReference? box;
+
+    async Task OnBoxClicked()
+    {
+        // Pass ElementReference.
+
+        await JSRuntime.InvokeVoidAsync("setRandomColor", new object? [] { box });
+    }
+}

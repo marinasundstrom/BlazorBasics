@@ -1,0 +1,24 @@
+@* Counter with event handler *@
+
+<Counter CurrentCountChanged="OnCurrentCountChanged" />
+
+@if(numbersList.Any()) 
+{
+    <h3>Change history</h3>
+
+    <ul>
+    @foreach (var number in numbersList)
+    {
+        <li>@number</li>
+    }
+    </ul>
+}
+
+@code {
+    List<int> numbersList = new List<int>();
+
+    void OnCurrentCountChanged(int count) 
+    {
+        numbersList.Add(count);
+    }
+}

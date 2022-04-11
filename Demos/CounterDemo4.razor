@@ -1,0 +1,16 @@
+@* Access component through @ref *@
+
+<Counter @ref="counter" />
+
+<button @onclick="ResetCounter">Reset counter</button>
+
+@code {
+    Counter counter = null!;
+
+    async Task ResetCounter() 
+    {
+        // Accessing method in Counter component.
+
+        await counter.ResetAsync();
+    }
+}

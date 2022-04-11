@@ -1,0 +1,9 @@
+@* Counter with parameters and two-way binding *@
+
+<Counter @bind-CurrentCount="currentCount" IncrementBy="5" />
+
+<p role="status">CurrentCount from Counter: @currentCount</p>
+
+@code {
+    int currentCount = 3;
+}
