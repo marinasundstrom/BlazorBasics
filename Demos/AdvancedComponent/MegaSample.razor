@@ -1,0 +1,43 @@
+@using System.ComponentModel.DataAnnotations
+
+<h1>Forms, Render fragments, and more</h1>
+
+<p>Custom list component with template. Form with validation.</p>
+
+<MyList Items="items" style="background-color: lightgray;">
+    <ItemTemplate Context="item">
+        <a href="#">@item.Text</a>
+        <button @onclick="() => items.Remove(item)">X</button>
+    </ItemTemplate>
+</MyList>
+
+<EditForm T="Items" Model="@this" OnValidSubmit="AddItem">
+
+    <DataAnnotationsValidator />
+
+    <div>
+        <label for="text">
+            Text
+        </label>  
+         <InputText id="text" @bind-Value="Text"></InputText>
+        <ValidationMessage For="() => Text" />      
+    </div>
+
+    <button type="submit">Add item</button>
+
+</EditForm>
+
+@code {
+    List<Item> items = new List<Item>();
+
+    [Required]
+    public string? Text { get; set; }
+
+    void AddItem() 
+    {
+        items.Add(new Item(Text!));
+        Text = null;
+    }
+
+    record Item(string Text);
+}

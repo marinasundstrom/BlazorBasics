@@ -19,7 +19,7 @@ This is what is shown:
     * Calling C# methods from JavaScript
     * Passing ElementReferences and ObjectReferences between JS and .NET.
 
-**NOT** covered: Routing, RenderFragments, Cascading parameters, JS Isolation, and more...
+**NOT** covered: Routing, Cascading parameters, JS Isolation, and more...
     
 ## Requirements
 

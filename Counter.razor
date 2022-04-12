@@ -34,7 +34,7 @@
 
         await CurrentCountChanged.InvokeAsync(CurrentCount);
 
-        // Blazor cannot detect changes in the componet since this method is not a Callback.
+        // Blazor is not able to detect changes in the componet if not passed as a callback.
         // We have to manually tell Blazor that the state has changed.
 
         StateHasChanged();
