@@ -6,6 +6,12 @@ No CSS framework. Just vanilla HTML and minimal styling.
 
 [Video](https://www.youtube.com/watch?v=KnLGNEiuyxk)
 
+## Goal
+
+Providing brief but yet extensive samples demonstrating the basics of Blazor. 
+
+Answering the most common questions about building Web apps with Blazor.
+
 ## Contents
 
 This is what is shown:
@@ -30,7 +36,7 @@ More on project structure below.
 To build this, you need:
 
 * .NET 6 SDK (lastest)
-* VS Code or Visual Studio (if you don't prefere Notepad :) )
+* VS Code or Visual Studio (if you don't prefer Notepad :) )
 
 ## Run the app
 
