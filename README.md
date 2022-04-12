@@ -4,6 +4,8 @@ A project containing various samples that demonstrate the basics of Blazor.
 
 No CSS framework. Just vanilla HTML and minimal styling.
 
+[Video](https://www.youtube.com/watch?v=KnLGNEiuyxk)
+
 ## Contents
 
 This is what is shown:
