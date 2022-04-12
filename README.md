@@ -22,6 +22,8 @@ This is what is shown:
     * Passing ElementReferences and ObjectReferences between JS and .NET.
 
 **NOT** covered: Routing, Cascading parameters, JS Isolation, and more...
+
+More on project structure below.
     
 ## Requirements
 
@@ -30,18 +32,33 @@ To build this, you need:
 * .NET 6 SDK (lastest)
 * VS Code or Visual Studio (if you don't prefere Notepad :) )
 
-## Run the project
+## Run the app
+
+Simply:
 
 ```
 dotnet run
 ```
 
-or
+or, in *watch* mode
 
 ```
 dotnet watch
 ```
 
+This will enable *Hot Reload* on save.
+
+## Publish the app
+
+When you are ready to publish your app you simply run this command:
+
+```
+dotnet public -c Release
+```
+
+This will create an optimized bundle for you. 
+
+In the process, the linker will strip out unsused dependencies in order to minimize the size.
 
 
 ## Project structure
