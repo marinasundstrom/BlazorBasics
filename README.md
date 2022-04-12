@@ -12,6 +12,14 @@ Providing brief but yet extensive samples demonstrating the basics of Blazor.
 
 Answering the most common questions about building Web apps with Blazor.
 
+### When you are ready
+
+When you feel confident in knowing the basic concepts of Blazor you can follow any of these routes:
+
+1. **Use a CSS framework**, like [Bootstrap](https://getbootstrap.com). You should now know how to interact with JavaScript plugins.
+
+2. **Use a component framework**, like [MudBlazor](https://mudblazor.com) (Material UI), [Radzen](https://blazor.radzen.com), or [Fluent UI](https://github.com/microsoft/fast-blazor). They provide business-grade components.
+
 ## Contents
 
 This is what is shown:
@@ -59,7 +67,7 @@ This will enable *Hot Reload* on save.
 When you are ready to publish your app you simply run this command:
 
 ```
-dotnet public -c Release
+dotnet publish -c Release
 ```
 
 This will create an optimized bundle for you. 
