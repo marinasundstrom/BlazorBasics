@@ -1,9 +1,11 @@
 ﻿# Blazor Basics
 
 
-A project containing various samples that demonstrate the basics of Blazor.
+A project containing various samples that demonstrate the basics of [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor).
 
-Uses Bootstrap 5.
+This project targets Blazor WebAssembly (which is client-side).
+
+Uses [Bootstrap 5](https://getbootstrap.com/) for basic styling and samples.
 
 [Screenshots](/Screenshots/)
 
@@ -76,5 +78,7 @@ dotnet publish -c Release
 
 This will create an optimized bundle for you. 
 
-In the process, the linker will strip out unsused dependencies in order to minimize the size.
+In the process, the linker will strip out unsused dependencies in order to reduced the size.
+
+Then you can just copy all files to your server.
 
