@@ -1,0 +1,17 @@
+﻿@page "/"
+@inject NavigationManager NavigationManager
+
+<h2>Start page</h2>
+
+<p>This is the first page.</p>
+
+<a href="/page2">Go to second page</a>
+
+<button class="btn btn-primary" @onclick="Navigate">Go to second page (NavigationManager)</button>
+
+@code {
+    void Navigate()
+    {
+        NavigationManager.NavigateTo("/page2");
+    }
+}

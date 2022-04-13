@@ -1,0 +1,44 @@
+@inject IJSRuntime JSRuntime
+
+<h2>Greeter</h2>
+
+<p>Demonstrates C# invoking a JavaScript function that returns a value.</p>
+
+@if(greeting is null)
+{
+<div class="row row-cols-lg-auto g-3 align-items-center">
+    <div>
+        <select id="title" class="form-select" @bind="title">
+            <option selected value="@((string)null)">Title</option>
+            <option>Mr.</option>
+            <option>Mrs.</option>
+            <option>Ms.</option>
+            <option>Sir</option>
+        </select>
+    </div>
+
+
+    <div>
+        <input id="name" class="form-control" @bind="name" placeholder="What is your name?" />
+      </div>
+      
+        <button class="btn btn-primary" @onclick="Ask">Say "Hi!"</button>
+</div>
+}
+else 
+{
+    <h3>@greeting :)</h3>
+}
+
+@code {
+    string? title;
+    string? name;
+    string? greeting;
+
+    async Task Ask()
+    {
+        // Calling the "sayHi" function that is defined on the "window" object.
+
+        greeting = await JSRuntime.InvokeAsync<string>("sayHi", new [] { title, name });
+    }
+}

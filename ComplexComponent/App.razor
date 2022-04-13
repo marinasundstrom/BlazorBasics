@@ -1,0 +1,55 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+<PageTitle>ComplexComponent</PageTitle>
+
+<div class="container col-6-md mt-md-4">
+
+    <h1>Complex component</h1>
+
+    <p>Custom list component with template. Form with validation.</p>
+
+    <MyList Items="items" style="border: 1px solid black; padding: 15px">
+        <ItemTemplate Context="item">
+            <div class="d-flex">
+                <a class="flex-grow-1" href="#">@item.Text</a>
+                <a class="btn btn-sm btn-outline-secondary justify-content-end ms-2 text-decoration-none"
+                    @onclick="() => items.Remove(item)" @onclick:preventDefault>&times;</a>
+            </div>
+        </ItemTemplate>
+    </MyList>
+
+    <EditForm class="form" Model="@this" OnValidSubmit="AddItem">
+
+        <DataAnnotationsValidator />
+
+        <div class="row row-cols-lg-auto g-3 align-items-center">
+
+            <div>
+                <InputText class="form-control" id="text" @bind-Value="Text" placeholder="Write something"></InputText>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Add item</button>
+
+        </div>
+
+        <ValidationMessage For="() => Text" />
+
+    </EditForm>
+
+</div>
+
+
+@code {
+    List<Item> items = new List<Item>();
+
+    [Required(ErrorMessage = "You have to enter something.")]
+    public string? Text { get; set; }
+
+    void AddItem()
+    {
+        items.Add(new Item(Text!));
+        Text = null;
+    }
+
+    record Item(string Text);
+}

@@ -1,0 +1,43 @@
+﻿<PageTitle>BlazorCounter</PageTitle>
+
+<div class="container">
+    <div class="pt-4">
+        <Counter />
+    </div>
+
+    <div class="pt-4">
+        <CounterV2 CurrentCount="2" IncrementBy="3" />
+
+        <p class="mt-3"><b>CurrentCount</b> was initially set to 2. And <b>IncrementBy</b> to 3.</p>
+    </div>
+
+    <div class="pt-4">
+        <CounterV3 @bind-CurrentCount="currentCount" />
+
+        <p class="mt-3"><b>CurrentCount</b> from component: @currentCount</p>
+    </div>
+
+    <div class="pt-4">
+        <CounterV3 CurrentCountChanged="OnCurrentCountChanged" />
+
+        <h3 class="mt-4">History</h3>
+
+        <ul class="mt-3">
+            @foreach(var item in items) 
+            {
+                <li>@item</li>
+            }
+        </ul>
+    </div>
+</div>
+
+@code {
+    int currentCount;
+
+    List<int> items = new List<int>();
+
+    void OnCurrentCountChanged(int count) 
+    {
+        items.Add(count);
+    }
+}

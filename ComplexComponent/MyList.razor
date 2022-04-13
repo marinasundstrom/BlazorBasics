@@ -1,0 +1,22 @@
+@typeparam T
+
+<ul @attributes="AdditionalAttributes">
+    @foreach (var item in Items)
+    {
+        <li>
+            @ItemTemplate(item)
+        </li>
+    }
+</ul>
+
+@code {
+    [Parameter]
+    public IList<T> Items { get; set; } = null!;
+
+    [Parameter]
+    [EditorRequired]
+    public RenderFragment<T> ItemTemplate { get; set; } = null!;
+
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> AdditionalAttributes { get; set; } = null!;
+}

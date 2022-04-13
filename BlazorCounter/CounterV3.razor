@@ -1,0 +1,23 @@
+﻿<h1>Counter V3</h1>
+
+<p role="status">Current count: @CurrentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    [Parameter]
+    public int CurrentCount { get; set; } = 0;
+
+    [Parameter]
+    public EventCallback<int> CurrentCountChanged { get; set; }
+
+    [Parameter]
+    public int IncrementBy { get; set; } = 1;
+
+    private async Task IncrementCount()
+    {
+        CurrentCount += IncrementBy;
+
+        await CurrentCountChanged.InvokeAsync(CurrentCount);
+    }
+}
