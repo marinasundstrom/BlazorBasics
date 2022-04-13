@@ -1,13 +1,16 @@
 ﻿@page "/"
 @inject NavigationManager NavigationManager
 
-<h2>Start page</h2>
+  <div class="bg-light p-5 rounded">
+    <h1>Start page</h1>
+    <p class="lead">This is your first page.</p>
 
-<p>This is the first page.</p>
+    <a class="btn btn-lg btn-primary" href="/page2" role="button">Go to second page &raquo;</a>
+    <button class="btn btn-lg btn-primary" @onclick="Navigate">Go to second page (NavigationManager) &raquo;</button>
+  </div>
 
-<a href="/page2">Go to second page</a>
-
-<button class="btn btn-primary" @onclick="Navigate">Go to second page (NavigationManager)</button>
+    <a class="btn btn-lg btn-primary" href="/page2/FooBar">Go to second page with route param &raquo;</a>
+    <a class="btn btn-lg btn-primary" href="/page2?myParam=Test">Go to second page with query param &raquo;</a>
 
 @code {
     void Navigate()

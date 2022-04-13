@@ -1,5 +1,24 @@
-﻿@page "/page2"
+﻿@page "/page2/{arg?}"
 
-<h2>Page 2</h2>
+<h1>Page 2</h1>
 
 <p>This is the second page.</p>
+
+@if(Arg is not null) 
+{
+    <b>Route parameter "arg" is: </b>@Arg
+}
+
+@if(MyParam is not null) 
+{
+    <b>Query parameter "myParam" is: </b>@MyParam
+}
+
+@code {
+    [Parameter]
+    public string? Arg { get; set; }
+
+    [Parameter]
+    [SupplyParameterFromQuery(Name = "myParam")]
+    public string? MyParam { get; set; }
+}
