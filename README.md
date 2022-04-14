@@ -7,6 +7,8 @@ This project targets Blazor WebAssembly (which is client-side).
 
 Uses [Bootstrap 5](https://getbootstrap.com/) for basic styling and samples.
 
+Links to learning resources below.
+
 [Screenshots](/Screenshots/)
 
 ## Goal
@@ -81,4 +83,8 @@ This will create an optimized bundle for you.
 In the process, the linker will strip out unsused dependencies in order to reduced the size.
 
 Then you can just copy all files to your server.
+
+## Learning resources
+* [Documentation](https://docs.microsoft.com/en-us/aspnet/core/blazor/?view=aspnetcore-6.0) - Microsoft
+* [Blazor University](https://blazor-university.com/)
 
