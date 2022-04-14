@@ -1,0 +1,36 @@
+@inject IJSRuntime JS
+@implements IAsyncDisposable
+
+<h2>JS Module Isolation</h2>
+
+<p>Blazor can import JS modules.</p> 
+
+<button class="btn btn-primary" @onclick="Prompt">Prompt</button>
+
+<p class="mt-3">It also allows for JS files to be placed next to component files. Provided that file naming follows a convention, the path will be retained. (See sample)</p>
+
+@if(pet is not null) 
+{
+    <p><b>So your favorite pet is: </b>@pet</p>
+}
+
+@code {
+    IJSObjectReference module = null!;
+    string? pet;
+
+    protected override async Task OnInitializedAsync() 
+    {
+        module = await JS.InvokeAsync<IJSObjectReference>(
+            "import", "./Test/JSModuleIsolation.razor.js");
+    }
+
+    async Task Prompt() 
+    {
+        pet = await module.InvokeAsync<string>("showPrompt", new [] { "What is the name of your favorite pet?" });
+    }
+
+    public async ValueTask DisposeAsync() 
+    {
+        await module.DisposeAsync();
+    }
+}
