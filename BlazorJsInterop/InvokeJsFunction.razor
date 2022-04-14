@@ -4,9 +4,14 @@
 
 <p>Demonstrates C# invoking a JavaScript function that returns a value.</p>
 
-@if(greeting is null)
+@if (greeting is null)
 {
-<div class="row row-cols-lg-auto g-3 align-items-center">
+    <div class="row row-cols-lg-auto g-3 align-items-center">
+
+    <div>
+        <input id="name" class="form-control" @bind="name" placeholder="What is your name?" />
+    </div>
+
     <div>
         <select id="title" class="form-select" @bind="title">
             <option selected value="@((string)null)">Title</option>
@@ -18,14 +23,10 @@
     </div>
 
 
-    <div>
-        <input id="name" class="form-control" @bind="name" placeholder="What is your name?" />
-      </div>
-      
-        <button class="btn btn-primary" @onclick="Ask">Say "Hi!"</button>
+    <button class="btn btn-primary" @onclick="Ask">Say "Hi!"</button>
 </div>
 }
-else 
+else
 {
     <h3>@greeting :)</h3>
 }
@@ -39,6 +40,6 @@ else
     {
         // Calling the "sayHi" function that is defined on the "window" object.
 
-        greeting = await JSRuntime.InvokeAsync<string>("sayHi", new [] { title, name });
+        greeting = await JSRuntime.InvokeAsync<string>("sayHi", new[] { title, name });
     }
 }
